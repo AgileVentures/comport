@@ -14,4 +14,11 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+
+# Ignore RubyMine
 /.idea/
+
+# Ignore environment variables
+/.env.development
+/.env.production
+/.env.test

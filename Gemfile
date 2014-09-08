@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+source 'https://rails-assets.org'
 
 gem 'rails', '4.1.4'
 gem 'pg'
@@ -7,6 +8,9 @@ gem 'slim-rails' #templating engine, alternative to haml
 gem 'sass-rails', '~> 4.0.3'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
+
+# UI styling
+gem 'rails-assets-semantic'
 
 # because we don't have node.js
 gem 'therubyracer', platforms: :ruby

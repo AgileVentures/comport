@@ -4,7 +4,7 @@ require 'rails/all'
 
 Bundler.require(*Rails.groups)
 
-module Coport
+module Comport
   class Application < Rails::Application
     # config.time_zone = 'Central Time (US & Canada)'
 

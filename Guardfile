@@ -1,24 +1,20 @@
-# A sample Guardfile
-# More info at https://github.com/guard/guard#readme
-
 guard 'livereload' do
   watch(%r{app/views/.+\.(erb|haml|slim)$})
   watch(%r{app/helpers/.+\.rb})
   watch(%r{public/.+\.(css|js|html)})
   watch(%r{config/locales/.+\.yml})
+
   # Rails Assets Pipeline
   watch(%r{(app|vendor)(/assets/\w+/(.+\.(css|js|html|png|jpg))).*}) { |m| "/assets/#{m[3]}" }
+
+  # Javascript and specs
+  watch(%r{spec/javascripts/spec\.(js\.coffee|js|coffee)$}) { 'spec/javascripts' }
+  watch(%r{spec/javascripts/.+_spec\.(js\.coffee|js|coffee)$})
+  watch(%r{spec/javascripts/fixtures/.+$})
+  watch(%r{app/assets/javascripts/(.+?)\.(js\.coffee|js|coffee)(?:\.\w+)*$}) { |m| "spec/javascripts/#{ m[1] }_spec.#{ m[2] }" }
 end
 
-# Note: The cmd option is now required due to the increasing number of ways
-#       rspec may be run, below are examples of the most common uses.
-#  * bundler: 'bundle exec rspec'
-#  * bundler binstubs: 'bin/rspec'
-#  * spring: 'bin/rsspec' (This will use spring if running and you have
-#                          installed the spring binstubs per the docs)
-#  * zeus: 'zeus rspec' (requires the server to be started separetly)
-#  * 'just' rspec: 'rspec'
-guard :rspec, cmd: 'bundle exec rspec' do
+guard :rspec, cmd: 'bundle exec rspec', all_after_pass: false do
   watch(%r{^spec/.+_spec\.rb$})
   watch(%r{^lib/(.+)\.rb$})     { |m| "spec/lib/#{m[1]}_spec.rb" }
   watch('spec/spec_helper.rb')  { "spec" }
@@ -40,3 +36,8 @@ guard :rspec, cmd: 'bundle exec rspec' do
   watch(%r{^spec/acceptance/steps/(.+)_steps\.rb$})   { |m| Dir[File.join("**/#{m[1]}.feature")][0] || 'spec/acceptance' }
 end
 
+guard 'cucumber', all_on_start: false, all_after_pass: false, focus_on: '@wip', bundler: false, cli: '--tags ~@ignore --no-profile --color --format pretty --strict' do
+  watch(%r{^features/.+\.feature$})
+  watch(%r{^features/support/.+$})          { 'features' }
+  watch(%r{^features/step_definitions/(.+)_steps\.rb$}) { |m| Dir[File.join("**/#{m[1]}.feature")][0] || 'features' }
+end

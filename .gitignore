@@ -7,6 +7,10 @@
 # Ignore bundler config.
 /.bundle
 
+# Ignore coverage results
+
+/coverage
+
 # Ignore the default SQLite database.
 /db/*.sqlite3
 /db/*.sqlite3-journal
@@ -15,10 +19,52 @@
 /log/*.log
 /tmp
 
-# Ignore RubyMine
-/.idea/
+# scm revert files
+**.orig
 
+# Mac finder artifacts
+.DS_Store
+
+# Netbeans project directory
+/nbproject/
+
+# RubyMine project files
+.idea
+/.idea/*
+
+# Textmate project files
+/*.tmproj
+
+# vim artifacts
+**.swp
+
+# Ignore application configuration
 # Ignore environment variables
+#/config/application.yml
+.env
 /.env.development
 /.env.production
 /.env.test
+
+# Versioning
+.rvmrc.env
+
+.rvmrc
+.ruby-version
+.ruby-gemset
+
+# Ignore Precompiled Assets
+public/assets/**
+
+# Plugin files
+.floo
+.flooignore
+
+# Zeus config
+zeus.json
+
+# Pry config
+.pryrc
+
+# Guard config
+Guardfile

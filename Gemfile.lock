@@ -27,12 +27,25 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
+    addressable (2.3.6)
+    alias (0.2.3)
     arel (5.0.1.20140414130214)
+    awesome_print (1.2.0)
     better_errors (2.0.0)
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
       rack (>= 0.9.0)
+    binding.repl (1.0.4.1)
+    binding_of_caller (0.7.2)
+      debug_inspector (>= 0.0.1)
+    boson (1.2.4)
+    boson-more (0.2.2)
+      boson (>= 1.2.0)
     builder (3.2.2)
+    byebug (3.4.0)
+      columnize (~> 0.8)
+      debugger-linecache (~> 1.2)
+      slop (~> 3.6)
     capistrano (3.2.1)
       i18n
       rake (>= 10.0.0)
@@ -51,6 +64,7 @@ GEM
       xpath (~> 2.0)
     celluloid (0.15.2)
       timers (~> 1.1.0)
+    clipboard (1.0.5)
     cliver (0.3.2)
     coderay (1.1.0)
     coffee-rails (4.0.1)
@@ -61,6 +75,15 @@ GEM
       execjs
     coffee-script-source (1.8.0)
     colorize (0.7.3)
+    columnize (0.8.9)
+    coveralls (0.7.1)
+      multi_json (~> 1.3)
+      rest-client
+      simplecov (>= 0.7)
+      term-ansicolor
+      thor
+    crack (0.4.2)
+      safe_yaml (~> 1.0.0)
     cucumber (1.3.16)
       builder (>= 2.1.2)
       diff-lcs (>= 1.1.3)
@@ -73,7 +96,14 @@ GEM
       mime-types (~> 1.16)
       nokogiri (~> 1.5)
       rails (>= 3, < 5)
+    database_cleaner (1.3.0)
+    debug_inspector (0.0.2)
+    debugger-linecache (1.2.0)
+    debugging (1.0.1)
+      binding.repl (~> 1)
+      paint (~> 0, >= 0.8.7)
     diff-lcs (1.2.5)
+    docile (1.1.5)
     dotenv (0.11.1)
       dotenv-deployment (~> 0.0.2)
     dotenv-deployment (0.0.2)
@@ -84,9 +114,21 @@ GEM
       http_parser.rb (~> 0.6.0)
     erubis (2.7.0)
     eventmachine (1.0.3)
+    every_day_irb (1.6.1)
     execjs (2.2.1)
+    factory_girl (4.4.0)
+      activesupport (>= 3.0.0)
+    factory_girl_rails (4.4.1)
+      factory_girl (~> 4.4.0)
+      railties (>= 3.0.0)
+    faker (1.4.3)
+      i18n (~> 0.5)
+    fancy_irb (0.7.3)
+      paint (>= 0.8.1)
+      unicode-display_width (>= 0.1.1)
     ffi (1.9.3)
     formatador (0.2.5)
+    g (1.7.2)
     gherkin (2.12.2)
       multi_json (~> 1.3)
     guard (2.6.1)
@@ -95,6 +137,9 @@ GEM
       lumberjack (~> 1.0)
       pry (>= 0.9.12)
       thor (>= 0.18.1)
+    guard-cucumber (1.4.1)
+      cucumber (>= 1.2.0)
+      guard (>= 1.1.0)
     guard-livereload (2.3.0)
       em-websocket (~> 0.5)
       guard (~> 2.0)
@@ -103,15 +148,45 @@ GEM
       guard (~> 2.1)
       rspec (>= 2.14, < 4.0)
     hike (1.2.3)
+    hirb (0.7.2)
     http_parser.rb (0.6.0)
     i18n (0.6.11)
+    interactive_editor (0.0.10)
+      spoon (>= 0.0.1)
+    irbtools (1.6.1)
+      alias (~> 0.2.3)
+      awesome_print (~> 1.2)
+      binding.repl (>= 1.0.1)
+      boson (~> 1.2.4)
+      boson-more (~> 0.2.2)
+      clipboard (~> 1.0.5)
+      coderay (~> 1.1.0)
+      debugging (~> 1.0)
+      every_day_irb (>= 1.6.1)
+      fancy_irb (>= 0.7.3)
+      g (>= 1.7.2)
+      hirb (~> 0.7)
+      interactive_editor (>= 0.0.10)
+      method_locator (>= 0.0.4)
+      method_source (>= 0.8.2)
+      methodfinder (>= 1.2.5)
+      ori (~> 0.1.0)
+      os (~> 0.9)
+      paint (>= 0.8.7)
+      ruby_engine (~> 1.0)
+      ruby_info (~> 1.0)
+      ruby_version (~> 1.0)
+      wirb (>= 1.0.3)
     jasmine-core (2.0.2)
+    jasmine-jquery-rails (2.0.3)
     jasmine-rails (0.10.2)
       jasmine-core (>= 1.3, < 3.0)
       phantomjs
       railties (>= 3.1.0)
       sprockets-rails
     json (1.8.1)
+    launchy (2.4.2)
+      addressable (~> 2.3)
     libnotify (0.8.3)
       ffi (>= 1.0.11)
     libv8 (3.16.14.3)
@@ -123,7 +198,9 @@ GEM
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    method_locator (0.0.4)
     method_source (0.8.2)
+    methodfinder (2.0.0)
     mime-types (1.25.1)
     mini_portile (0.6.0)
     minitest (5.4.1)
@@ -132,8 +209,12 @@ GEM
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
     net-ssh (2.9.1)
+    netrc (0.7.7)
     nokogiri (1.6.3.1)
       mini_portile (= 0.6.0)
+    ori (0.1.0)
+    os (0.9.6)
+    paint (0.8.7)
     pg (0.17.1)
     phantomjs (1.9.7.1)
     poltergeist (1.5.1)
@@ -146,6 +227,11 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
+    pry-byebug (2.0.0)
+      byebug (~> 3.4)
+      pry (~> 0.10)
+    pry-rails (0.3.2)
+      pry (>= 0.9.10)
     rack (1.5.2)
     rack-test (0.6.2)
       rack (>= 1.0)
@@ -221,6 +307,9 @@ GEM
     rdoc (4.1.1)
       json (~> 1.4)
     ref (1.0.5)
+    rest-client (1.7.2)
+      mime-types (>= 1.16, < 3.0)
+      netrc (~> 0.7)
     rspec (3.0.0)
       rspec-core (~> 3.0.0)
       rspec-expectations (~> 3.0.0)
@@ -241,6 +330,10 @@ GEM
       rspec-mocks (~> 3.0.0)
       rspec-support (~> 3.0.0)
     rspec-support (3.0.4)
+    ruby_engine (1.0.1)
+    ruby_info (1.0.1)
+    ruby_version (1.0.1)
+    safe_yaml (1.0.3)
     sass (3.2.19)
     sass-rails (4.0.3)
       railties (>= 4.0.0, < 5.0)
@@ -250,7 +343,22 @@ GEM
     sdoc (0.4.1)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
+    simplecov (0.9.0)
+      docile (~> 1.1.0)
+      multi_json
+      simplecov-html (~> 0.8.0)
+    simplecov-html (0.8.0)
+    slim (2.0.3)
+      temple (~> 0.6.6)
+      tilt (>= 1.3.3, < 2.1)
+    slim-rails (2.1.5)
+      actionpack (>= 3.0, < 4.2)
+      activesupport (>= 3.0, < 4.2)
+      railties (>= 3.0, < 4.2)
+      slim (~> 2.0)
     slop (3.6.0)
+    spoon (0.0.4)
+      ffi
     spring (1.1.3)
     spring-commands-rspec (1.0.2)
       spring (>= 0.9.1)
@@ -267,6 +375,9 @@ GEM
       colorize
       net-scp (>= 1.1.2)
       net-ssh (>= 2.8.0)
+    temple (0.6.8)
+    term-ansicolor (1.3.0)
+      tins (~> 1.0)
     test_after_commit (0.2.5)
       activerecord (>= 3.2)
     therubyracer (0.12.1)
@@ -276,6 +387,7 @@ GEM
     thread_safe (0.3.4)
     tilt (1.4.1)
     timers (1.1.0)
+    tins (1.3.2)
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
@@ -284,7 +396,13 @@ GEM
     uglifier (2.5.3)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
+    unicode-display_width (0.1.1)
+    webmock (1.18.0)
+      addressable (>= 2.3.6)
+      crack (>= 0.3.2)
     websocket-driver (0.3.4)
+    wirb (1.0.3)
+      paint (~> 0.8)
     xpath (2.0.0)
       nokogiri (~> 1.3)
 
@@ -292,27 +410,42 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  awesome_print
   better_errors
+  binding_of_caller
   capistrano-rails
+  capybara
   coffee-rails (~> 4.0.0)
+  coveralls
   cucumber-rails
+  database_cleaner
   dotenv-deployment
   dotenv-rails
+  factory_girl_rails
+  faker
+  guard-cucumber
   guard-livereload
   guard-rspec
+  irbtools
+  jasmine-jquery-rails
   jasmine-rails
+  launchy
   libnotify
   pg
   poltergeist
   pry
+  pry-byebug
+  pry-rails
   rails (= 4.1.4)
   rails-i18n
   rb-inotify
   rspec-rails
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
+  slim-rails
   spring
   spring-commands-rspec
   test_after_commit
   therubyracer
   uglifier (>= 1.3.0)
+  webmock

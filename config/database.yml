@@ -19,10 +19,10 @@ default: &default
   encoding: unicode
   # For details on connection pooling, see rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
-  pool: <%= ENV['COPORT_DATABASE_POOL'] || 5 %>
-  database: <%= ENV['COPORT_DATABASE_DATABASE'] %>
-  username: <%= ENV['COPORT_DATABASE_USERNAME'] %>
-  password: <%= ENV['COPORT_DATABASE_PASSWORD'] %>
+  pool: <%= ENV['COMPORT_DATABASE_POOL'] || 5 %>
+  database: <%= ENV['COMPORT_DATABASE_DATABASE'] %>
+  username: <%= ENV['COMPORT_DATABASE_USERNAME'] %>
+  password: <%= ENV['COMPORT_DATABASE_PASSWORD'] %>
 
 development:
   <<: *default

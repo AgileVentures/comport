@@ -1,40 +1,76 @@
 source 'https://rubygems.org'
+source 'https://rails-assets.org'
 
-
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.4'
-# Use postgresql as the database for Active Record
 gem 'pg'
-# Use SCSS for stylesheets
+
+gem 'slim-rails' #templating engine, alternative to haml 
 gem 'sass-rails', '~> 4.0.3'
-# Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
-# Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails', '~> 4.0.0'
-# See https://github.com/sstephenson/execjs#readme for more supported runtimes
-# gem 'therubyracer',  platforms: :ruby
 
-# Use jquery as the JavaScript library
-gem 'jquery-rails'
-# Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-gem 'turbolinks'
-# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 2.0'
-# bundle exec rake doc:rails generates the API under doc/api.
-gem 'sdoc', '~> 0.4.0',          group: :doc
+# UI styling
+gem 'rails-assets-semantic'
 
-# Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-gem 'spring',        group: :development
+# because we don't have node.js
+gem 'therubyracer', platforms: :ruby
 
-# Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+gem 'rails-i18n'
 
-# Use unicorn as the app server
-# gem 'unicorn'
+group :doc do
+  gem 'sdoc', '~> 0.4.0'
+end
 
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
+group :development do
+  # deployment
+  gem 'capistrano-rails'
+  gem 'dotenv-deployment'
 
-# Use debugger
-# gem 'debugger', group: [:development, :test]
+  # better development insight
+  gem 'better_errors' # web console run on rails exceptions
+  gem 'binding_of_caller'  # enhancements for better_errors
+  gem 'irbtools', require: 'binding.repl' # better ruby and rails console
+  gem 'pry' # better debugging console
+  gem 'pry-rails' # integrate pry with rails console
+  gem 'pry-byebug' # a version of pry and debugger compatible with Ruby >2.0.0
+  gem 'awesome_print' # color formatting for pry
 
+  # spring
+  gem 'spring'
+  gem 'spring-commands-rspec'
+
+  # guard
+  gem 'guard-rspec'
+  gem 'guard-cucumber'
+  gem 'guard-livereload', require: false # browser auto reload plugin for Guard
+
+  # notifications
+  gem 'libnotify'
+  gem 'rb-inotify'
+end
+
+group :test, :development do
+  gem 'dotenv-rails'
+  gem 'coveralls', require: false # Code coverage reporting
+  gem 'webmock' # mocking external net connections
+
+  # javascript testing
+  gem 'jasmine-rails'
+  gem 'jasmine-jquery-rails'
+
+  # integration testing
+  gem 'cucumber-rails', require: false
+  gem 'database_cleaner'  # Provides strategies for cleaning up the test db after test runs
+  gem 'capybara' # Simulates user actions for cucumber
+  gem 'launchy' # Opens capybara response in your browser on save_and_open_page
+  gem 'poltergeist' # headless browser for capybara and jasmine specs
+
+  # unit testing
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
+  gem 'faker' # Generates meaningful sequences for factories
+end
+
+group :test do
+  gem 'test_after_commit'
+end
